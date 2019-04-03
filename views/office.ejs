@@ -2,8 +2,8 @@
 	<header>
     <title>Matrix</title>
     <meta name="google-signin-client_id" content="<%= googleCredential.publicKey %>">
-    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css" />	
-    <link rel="stylesheet" href="/css/office.css" />	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/office.css" />
 	</header>
 	<body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
@@ -21,25 +21,21 @@
       </div>
   <% } %>
 
-<!--
-	<div id="room-1" style="float:left;width: 300px;height: 300px; border: 1px solid">
-      <button enter-room>Sala-1</button>
+    <div class="dropdown">
+      <img id="dropdownMenuButton" width="70px" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="50px" id="'+user.id+'"src="https://lh6.googleusercontent.com/-7R-UBYvqG6I/AAAAAAAAAAI/AAAAAAAAAAc/DBkmXUHlfJg/s96-c/photo.jpg">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Chamar</a>
+      </div>
     </div>
-    <div id="room-2" style="float:left;width: 300px;height: 300px; border: 1px solid">
-      <button enter-room >Sala-2</button>
-    </div>
-    <div id="room-3" style="float:left;width: 300px;height: 300px; border: 1px solid">
-      <button enter-room >Sala-3</button>
-    </div>
-    <div id="room-4" style="float:left;width: 300px;height: 300px; border: 1px solid">
-      <button enter-room >Sala-4</button>
-    </div>
-    <a href="https://meet.google.com/scv-eoyg-tbu" target="_blank">TESTE</a>
--->
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-		<script src="profile.web.js"></script>
-    <script src="office.web.js"></script>    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="profile.web.js"></script>
+    <script src="office.web.js"></script>
 	</body>
 </html>
