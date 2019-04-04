@@ -27,14 +27,14 @@ $(function(){
 
 	function showUserInRoom(user,room){
 
-		var userView = $('#'+user.id).length;
+		let userView = $('#'+user.id).length
 		if(userView==0){
-			userView = $('<img width="50px" id="'+user.id+'"src="'+user.imageUrl+'">');
+			userView = $('<img class="rounded-circle m-1 user-image" id="'+user.id+'"src="'+user.imageUrl+'">');
 		}else{
 			userView = $('#'+user.id).detach();
 		}
 
-		$("#"+room).append(userView);
+		$("#users-"+room).append(userView);
 	}
 
 	function redirectToHome(){
@@ -58,7 +58,7 @@ $(function(){
 		var lastRoom = localStorage.getItem('last_room' + matrixProfile.loadStoredProfile().id);
 		console.log(window.location)
 	   	//make connection
-		var socket = io.connect(window.location.protocol + "//" + window.location.host, { 
+		var socket = io.connect(window.location.protocol + "//" + window.location.host, {
 			query: "user=" + matrixProfile.loadStoredProfileAsString() + (lastRoom ? "&room=" + lastRoom : "")
 		})
 

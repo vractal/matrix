@@ -3,10 +3,10 @@ const GoogleCredentialController = require('./controllers/google.credentials.con
 const app = express()
 
 const Office = require('./office.server')
-const fs = require('fs');
+const fs = require('fs')
 
 const PORT = process.env.PORT || 8080
-const HOST = '0.0.0.0';
+const HOST = '0.0.0.0'
 const GOOGLECREDENTIAL = process.env.googleCredential || "990846956506-bfhbjsu4nl5mvlkngr3tsmfcek24e8t8.apps.googleusercontent.com"
 
 //set the template engine ejs
@@ -22,9 +22,9 @@ app.locals.googleCredential = new GoogleCredentialController(GOOGLECREDENTIAL)
 
 let roomData = process.env.roomData || fs.readFileSync('./file/default.room.web.json');
 let roomsDetail = JSON.parse(roomData);
-console.log(roomsDetail);
+console.log(roomsDetail)
 
-app.locals.roomsDetail = roomsDetail;
+app.locals.roomsDetail = roomsDetail
 
 //routes
 app.get('/', (req, res) => {
@@ -36,8 +36,8 @@ app.get('/office', (req, res) => {
 })
 
 //Listen on port 8080
-server = app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+server = app.listen(PORT, HOST)
+console.log(`Running on http://${HOST}:${PORT}`)
 
 new Office(server)
 

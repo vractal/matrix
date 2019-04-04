@@ -1,3 +1,17 @@
 .navbar {
   min-height: 30px;
 }
+.square{
+  width: 100%;
+  padding-bottom: 20%;
+}
+.room{
+  max-width: 50%;
+}
+.user-image{
+  width: 50px;
+}
+.btn-join{
+  position: absolute;
+  bottom: 10;
+}
