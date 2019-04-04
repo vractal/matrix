@@ -23,7 +23,7 @@
         	<div id="users-<%= roomsDetail[i].id%>" class="container fluid">
 					</div>
 					<div class="btn-join">
-						<button external-meet-url="<%= roomsDetail[i].externalMeetUrl%>" class="btn btn-danger text-white" enter-room>entrar na sala</button>
+						<button external-meet-url="<%= roomsDetail[i].externalMeetUrl%>" class="btn btn-danger text-white" enter-room="<%= roomsDetail[i].id%>" >entrar na sala</button>
 					</div>
       	</div>
   		<% } %>

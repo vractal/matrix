@@ -63,7 +63,7 @@ $(function(){
 		})
 
 		enterRoom.on("click",function(e){
-			var room = $(e.target).parent().attr("id");
+			var room = $(e.target).attr("enter-room");
 			socket.emit('enter-room', {room : room,user:matrixProfile.loadStoredProfile()})
 			setTimeout(function () {
 				goToMeet($(e.target).attr("external-meet-url"));
