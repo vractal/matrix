@@ -20,7 +20,8 @@ class OfficeController {
 
     if(userInRoom){
       this.addUserInRoom(
-        { ...userInRoom.user, inMeet: isUserInMeet }, userInRoom.room
+        Object.assign(userInRoom.user, { inMeet: isUserInMeet }),
+        userInRoom.room
       )
     }
   }
@@ -38,7 +39,13 @@ class OfficeController {
   }
 
   getUsersInOfficeByMap() {
-    return { ...this.getUsersInOffice()  };
+    let newMap = new Map();
+
+    this.getUsersInOffice().forEach(
+      (value, key) => newMap[key] = value
+    );
+
+    return newMap;
   }
 }
 
