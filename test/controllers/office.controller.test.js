@@ -2,64 +2,57 @@ const assert = require('assert');
 const OfficeController = require('../../controllers/office.controller');
 
 
-describe('Basic Office Test', () => {
-  it('add user in office', () => {
-    const officeController = new OfficeController();
+describe('OfficeController Spec', () => {
+  const controllerInstance = () => new OfficeController();
 
-    const profileData = {
-    		id: '111',
-    		name: 'Nome do fulano',
-    		imageUrl: 'http://localhost/img.jpg',
-    		email: 'Mail@mail.com',
-    	};
+  const defaultProfileData = {
+    id: '111',
+    name: 'Nome do fulano',
+    imageUrl: 'http://localhost/img.jpg',
+    email: 'Mail@mail.com',
+  };
 
-    	officeController.addUserInRoom(profileData, 'room-1');
 
-    assert.equal(officeController.getUsersInOffice().get('111').user.id, '111');
-    assert.equal(officeController.getUsersInOffice().get('111').room, 'room-1');
+  it('adds user to an office', () => {
+    let controller = controllerInstance();
+    controller.addUserInRoom(defaultProfileData, 'room-1');
+
+    const expectedMap = controller.getUsersInOffice().get(defaultProfileData.id);
+
+    assert.equal(expectedMap.user.id, '111');
+    assert.equal(expectedMap.room, 'room-1');
   });
 
-  it('remove user in office', () => {
-    const officeController = new OfficeController();
+  it('removes user from the office', () => {
+    let controller = controllerInstance();
 
-    const profileData = {
-    		id: '111',
-    		name: 'Nome do fulano',
-    		imageUrl: 'http://localhost/img.jpg',
-    		email: 'Mail@mail.com',
-    	};
-    	officeController.addUserInRoom(profileData, 'room-1');
-    	officeController.removeUser(profileData.id);
-    assert.equal(officeController.getUsersInOffice().get('111'), null);
+    controller.addUserInRoom(defaultProfileData, 'room-1');
+    controller.removeUser(defaultProfileData.id);
+
+    const expectedMap = controller.getUsersInOffice().get(defaultProfileData.id);
+
+    assert.equal(expectedMap, null);
   });
 
-  it('should size user in office 1', () => {
-    const officeController = new OfficeController();
+  it('returns offices size as 1 when add user to two offices', () => {
+    let controller = controllerInstance();
 
-    const profileData = {
-    		id: '111',
-    		name: 'Nome do fulano',
-    		imageUrl: 'http://localhost/img.jpg',
-    		email: 'Mail@mail.com',
-    	};
-    	officeController.addUserInRoom(profileData, 'room-1');
-    	officeController.addUserInRoom(profileData, 'room-2');
+    controller.addUserInRoom(defaultProfileData, 'room-1');
+    controller.addUserInRoom(defaultProfileData, 'room-2');
 
-    assert.equal(officeController.getUsersInOffice().size, 1);
+    const expectedUsersInOffice = controller.getUsersInOffice();
+
+    assert.equal(expectedUsersInOffice.size, 1);
   });
 
-  it('should user in room-2', () => {
-    const officeController = new OfficeController();
+  it('changes user from an office need returns last office added', () => {
+    let controller = controllerInstance();
 
-    const profileData = {
-    		id: '111',
-    		name: 'Nome do fulano',
-    		imageUrl: 'http://localhost/img.jpg',
-    		email: 'Mail@mail.com',
-    	};
-    	officeController.addUserInRoom(profileData, 'room-1');
-    	officeController.addUserInRoom(profileData, 'room-2');
+    controller.addUserInRoom(defaultProfileData, 'room-1');
+    controller.addUserInRoom(defaultProfileData, 'room-2');
 
-    assert.equal(officeController.getUsersInOffice().get('111').room, 'room-2');
+    const expectedUsersInOffice = controller.getUsersInOffice().get(defaultProfileData.id);
+
+    assert.equal(expectedUsersInOffice.room, 'room-2');
   });
 });
