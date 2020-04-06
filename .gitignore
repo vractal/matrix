@@ -55,9 +55,21 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+*.env
+!*.example.env
 
 # next.js build output
 .next
 
+
+# public/dist webpack build output
 public/dist
+
+# backend build output
+backend/dist
+
+# Generated random room config
+file/matrix.room.web.json
+
+# VSCode user settings
+.vscode/
