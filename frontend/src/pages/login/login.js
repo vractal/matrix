@@ -53,10 +53,6 @@ export class Login extends Component {
     window.location.href = "./morpheus";
   }
 
-  goToGoogleAuth() {
-    window.location.href = "./auth/google";
-  }
-
   render() {
     const { isDark, error } = this.state;
     return (
@@ -75,12 +71,14 @@ export class Login extends Component {
                 <div className="col px-5 text-center">
                   <Logo />
                   <Title />
-                  <GoogleButton
-                    isDark={isDark}
-                    onClick={() => {
-                      this.goToGoogleAuth();
-                    }}
-                  />
+
+                  <form action="/auth/login" method="POST">
+                  <input name="name" placeholder="nome" />
+                  <input name="password" placeholder="password" />
+                  <button type="submit">Entrar</button>
+
+                  </form>
+
                   {error && (
                     <p className={clsx("text-danger", styles.error)}>
                       {error}
