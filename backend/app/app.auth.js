@@ -5,16 +5,37 @@ import security from "./helpers/security";
 // import GooglePassport from "passport-google-oauth20";
 var LocalStrategy = require("passport-local").Strategy;
 
-const users = [{id: '12345',email:'email@email.com', name: 'foo',password: '12345'}];
+const users = [
+  { id: "neo", email: "email1@email.com", name: "neo", password: "neo" },
+  {
+    id: "trinity",
+    email: "email2@email.com",
+    name: "trinity",
+    password: "trinity",
+  },
+  {
+    id: "morpheu",
+    email: "email3@email.com",
+    name: "morpheu",
+    password: "morpheu",
+  },
+  {
+    id: "sentinela",
+    email: "email4@email.com",
+    name: "sentinela",
+    password: "sentinela",
+  },
+  { id: "smith", email: "email5@email.com", name: "smith", password: "smith" },
+];
 
-const getUser = name => {
-  const user = users.find(user => user.name === name)
+const getUser = (name) => {
+  const user = users.find((user) => user.name === name);
   if (user) {
-    return user
+    return user;
   } else {
-    return undefined
+    return undefined;
   }
-}
+};
 passport.use(
   new LocalStrategy(
     {
@@ -25,11 +46,10 @@ passport.use(
 
       if (!user) {
         return done(null, false, { message: "no user" });
-
       }
       try {
         if (user.password === password) {
-          console.log('teste',user)
+          console.log("teste", user);
 
           return done(null, user);
         } else {
