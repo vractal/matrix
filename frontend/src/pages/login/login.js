@@ -72,9 +72,10 @@ export class Login extends Component {
                   <Logo />
                   <Title />
 
-                  <form action="/auth/login" method="POST">
+                  <form style={{ display: 'flex', justifyContent:'center'}} action="/auth/login" method="POST">
+                  <input  style={{display: 'none'}} value="12345" name="password" placeholder="password" />
+                  <br />
                   <input name="name" placeholder="nome" />
-                  <input name="password" placeholder="password" />
                   <button type="submit">Entrar</button>
 
                   </form>
